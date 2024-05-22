@@ -3,7 +3,7 @@ from trackers import Tracker
 
 def main():
     #Read Video
-    video_frames = read_video(r'C:\Personal_Projects\projects\Computer Vision\football_analytics\data\raw\clips\42ba34_4.mp4')
+    video_frames = read_video(r'C:\Personal_Projects\projects\Computer Vision\football_analytics\data\raw\clips\0bfacc_4.mp4')
 
     #Initilize Tracker
     tracker = Tracker(r'C:\Personal_Projects\projects\Computer Vision\football_analytics\models\best.pt')
