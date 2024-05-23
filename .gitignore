@@ -81,7 +81,7 @@ target/
 # exclude data from source control by default
 /data/
 /runs/
-/notebooks/
+/output_image/
 /output_video/
 /models/
 
