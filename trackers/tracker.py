@@ -106,7 +106,7 @@ class Tracker:
         y2_rect = ( y2 + rectangle_height//2 ) + 15
 
         if track_id is not None:
-            cv2.rectangle(frame
+            cv2.rectangle(frame,
                           (int(x1_rect), int(y1_rect)),
                           (int(x2_rect), int(y2_rect)),
                           color,
