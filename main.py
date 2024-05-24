@@ -2,6 +2,8 @@ from utils import read_video, save_video
 from trackers import Tracker
 import cv2
 from team_assigner import TeamAssigner
+from player_ball_assigner import PlayerBallAssigner
+import numpy as np
 
 def main():
     # Read Video
@@ -15,7 +17,7 @@ def main():
                                        stub_path=r'C:\Personal_Projects\projects\Computer Vision\football_analytics\stubs\track_stubs.pkl')
 
     # Interpolate Ball Positions
-    # tracks['ball'] = tracker.interpolate_ball_positions(tracks['ball'])
+    tracks['ball'] = tracker.interpolate_ball_positions(tracks['ball'])
 
     # Assign Player Teams
     team_assigner = TeamAssigner()
@@ -30,6 +32,23 @@ def main():
             
             tracks['players'][frame_num][player_id]['team'] = team
             tracks['players'][frame_num][player_id]['team_color'] = team_assigner.team_colors[team]
+
+    # Assign Ball Aquisition
+    player_assigner = PlayerBallAssigner()
+
+    team_ball_control = []
+
+    for frame_num, player_track in enumerate(tracks['players']):
+        ball_bbox = tracks['ball'][frame_num][1]['bbox']
+        assinged_player = player_assigner.assign_ball_to_player(player_track, ball_bbox)
+
+        if assinged_player != -1:
+            tracks['players'][frame_num][assinged_player]['has_ball'] = True
+            team_ball_control.append(tracks['players'][frame_num][assinged_player]['team'])
+        else:
+            team_ball_control.append(team_ball_control[-1])
+
+    team = np.array(team_ball_control)
 
     # # Save croppped image of player
     # for track_id, player in tracks['players'][0].items():
@@ -47,7 +66,7 @@ def main():
     # Draw Output
     
     ## Draw Output Tracks
-    output_video_frames = tracker.draw_annotations(video_frames, tracks)
+    output_video_frames = tracker.draw_annotations(video_frames, tracks, team_ball_control)
 
     # Save Video
     save_video(output_video_frames, r'C:\Personal_Projects\projects\Computer Vision\football_analytics\output_video\output_video.avi')
