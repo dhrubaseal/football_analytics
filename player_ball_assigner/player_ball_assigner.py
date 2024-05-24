@@ -1,5 +1,6 @@
 import sys
-sys.path.append('../')
+import os
+sys.path.append(os.path.abspath(r'C:\Personal_Projects\projects\Computer Vision\football_analytics'))
 from utils import get_center_of_bbox
 
 class PlayerBallAssigner():
