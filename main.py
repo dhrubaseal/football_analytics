@@ -20,7 +20,7 @@ def main():
                                     tracks['players'][0])
     
     for frame_num, player_tracks in enumerate(tracks['players']):
-        for player_id, tracks in player_tracks.items():
+        for player_id, track in player_tracks.items():
             team = team_assigner.get_player_team(video_frames[frame_num],
                                                  track['bbox'],
                                                  player_id)
