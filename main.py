@@ -17,7 +17,7 @@ def main():
     # Interpolate Ball Positions
     tracks['ball'] = tracker.interpolate_ball_positions(tracks['ball'])
 
-    # Assign player teams
+    # Assign Player Teams
     team_assigner = TeamAssigner()
     team_assigner.assign_team_color(video_frames[0],
                                     tracks['players'][0])
