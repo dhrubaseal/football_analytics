@@ -45,9 +45,8 @@ def main():
     #     break
 
     # Draw Output
-
+    
     ## Draw Output Tracks
-
     output_video_frames = tracker.draw_annotations(video_frames, tracks)
 
     # Save Video
