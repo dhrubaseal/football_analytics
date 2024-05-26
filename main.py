@@ -40,11 +40,11 @@ def main():
 
     for frame_num, player_track in enumerate(tracks['players']):
         ball_bbox = tracks['ball'][frame_num][1]['bbox']
-        assinged_player = player_assigner.assign_ball_to_player(player_track, ball_bbox)
+        assigned_player = player_assigner.assign_ball_to_player(player_track, ball_bbox)
 
-        if assinged_player != -1:
-            tracks['players'][frame_num][assinged_player]['has_ball'] = True
-            team_ball_control.append(tracks['players'][frame_num][assinged_player]['team'])
+        if assigned_player != -1:
+            tracks['players'][frame_num][assigned_player]['has_ball'] = True
+            team_ball_control.append(tracks['players'][frame_num][assigned_player]['team'])
         else:
             team_ball_control.append(team_ball_control[-1])
 
