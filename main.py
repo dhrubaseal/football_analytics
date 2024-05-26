@@ -33,7 +33,7 @@ def main():
             tracks['players'][frame_num][player_id]['team'] = team
             tracks['players'][frame_num][player_id]['team_color'] = team_assigner.team_colors[team]
 
-    # # Assign Ball Aquisition
+    # Assign Ball Aquisition
     player_assigner = PlayerBallAssigner()
 
     team_ball_control = []
@@ -53,11 +53,6 @@ def main():
 
     ## Draw Output Tracks
     output_video_frames = tracker.draw_annotations(video_frames, tracks, team_ball_control)
-
-
-
-
-    # output_video_frames = tracker.draw_annotations(video_frames, tracks)
 
     # Save Video
     save_video(output_video_frames, r'C:\Personal_Projects\projects\Computer Vision\football_analytics\output_video\output_video.avi')
