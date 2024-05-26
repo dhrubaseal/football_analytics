@@ -46,7 +46,11 @@ def main():
             tracks['players'][frame_num][assigned_player]['has_ball'] = True
             team_ball_control.append(tracks['players'][frame_num][assigned_player]['team'])
         else:
-            team_ball_control.append(team_ball_control[-1])
+            if team_ball_control:
+                team_ball_control.append(team_ball_control[-1])
+            else:
+                team_ball_control.append('None')
+
     team_ball_control= np.array(team_ball_control)
 
     # Draw Output
