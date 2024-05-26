@@ -54,8 +54,7 @@ def main():
     team_ball_control= np.array(team_ball_control)
 
     # Draw Output
-
-    ## Draw Output Tracks
+    # Draw Output Tracks
     output_video_frames = tracker.draw_annotations(video_frames, tracks, team_ball_control)
 
     # Save Video
