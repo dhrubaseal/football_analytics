@@ -34,8 +34,10 @@ def main():
             tracks['players'][frame_num][player_id]['team_color'] = team_assigner.team_colors[team]
 
     # Assign Ball Aquisition
-    player_assigner =PlayerBallAssigner()
-    team_ball_control= []
+    player_assigner = PlayerBallAssigner()
+
+    team_ball_control = []
+
     for frame_num, player_track in enumerate(tracks['players']):
         ball_bbox = tracks['ball'][frame_num][1]['bbox']
         assigned_player = player_assigner.assign_ball_to_player(player_track, ball_bbox)
@@ -46,23 +48,9 @@ def main():
         else:
             team_ball_control.append(team_ball_control[-1])
     team_ball_control= np.array(team_ball_control)
-    
-    # # Save croppped image of player
-
-    # for track_id, player in tracks['players'][0].items():
-    #     bbox = player['bbox']
-    #     frame = video_frames[0]
-
-    #     # Crop bbox from frame
-    #     cropped_image = frame[int(bbox[1]):int(bbox[3]), int(bbox[0]):int(bbox[2])]
-
-    #     # Save the cropped image
-    #     cv2.imwrite(f'output_image/cropped_img.jpg', cropped_image)
-        
-    #     break
 
     # Draw Output
-    
+
     ## Draw Output Tracks
     output_video_frames = tracker.draw_annotations(video_frames, tracks, team_ball_control)
 
