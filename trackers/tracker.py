@@ -197,7 +197,7 @@ class Tracker:
                     frame = self.draw_triangle(frame, player['bbox'], (0,0,255))
 
             # Draw ball
-            for _, ball in ball_dict.items():
+            for track_id, ball in ball_dict.items():
                 frame = self.draw_triangle(frame, ball['bbox'], (0,255,0))
 
             # Draw Team Ball Control
