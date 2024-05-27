@@ -7,7 +7,7 @@ import numpy as np
 
 def main():
     # Read Video
-    video_frames = read_video(r'C:\Personal_Projects\projects\Computer Vision\football_analytics\data\clips\0bfacc_4.mp4')
+    video_frames = read_video(r'C:\Personal_Projects\projects\Computer Vision\football_analytics\data\clips\0bfacc_0.mp4')
 
     # Initilize Tracker
     tracker = Tracker(r'C:\Personal_Projects\projects\Computer Vision\football_analytics\models\best.pt')
@@ -58,7 +58,10 @@ def main():
     output_video_frames = tracker.draw_annotations(video_frames, tracks, team_ball_control)
 
     # Save Video
-    save_video(output_video_frames, r'C:\Personal_Projects\projects\Computer Vision\football_analytics\output_video\output_video.avi')
+    for frame in output_video_frames:
+        if frame is None:
+            continue
+        save_video(output_video_frames, r'C:\Personal_Projects\projects\Computer Vision\football_analytics\output_video\output_video.avi')
 
 if __name__ == '__main__':
     main()

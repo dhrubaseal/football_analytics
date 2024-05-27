@@ -156,7 +156,7 @@ class Tracker:
 
     def draw_team_ball_control(self, frame, frame_num, team_ball_control):
         # Draw a semi transparent rectangle
-
+             
         overlay = frame.copy()
 
         cv2.rectangle(overlay, (1350, 850), (1900, 970), (255, 255, 255), -1)
@@ -180,8 +180,10 @@ class Tracker:
     def draw_annotations(self, video_frames, tracks, team_ball_control):
         output_video_frames = []
         for frame_num, frame in enumerate(video_frames):
-
-            frame = frame.copy()
+            if frame is None:
+                yield None
+                continue
+            yield frame
 
             player_dict = tracks['players'][frame_num]
             referee_dict = tracks['referees'][frame_num]
