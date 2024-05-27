@@ -57,11 +57,7 @@ def main():
     # Draw Output Tracks
     output_video_frames = tracker.draw_annotations(video_frames, tracks, team_ball_control)
 
-    # Save Video
-    for frame in output_video_frames:
-        if frame is None:
-            continue
-        save_video(output_video_frames, r'C:\Personal_Projects\projects\Computer Vision\football_analytics\output_video\output_video.avi')
+    save_video(output_video_frames, r'C:\Personal_Projects\projects\Computer Vision\football_analytics\output_video\output_video.avi')
 
 if __name__ == '__main__':
     main()
