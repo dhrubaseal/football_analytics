@@ -9,6 +9,11 @@ def main():
     # Read Video
     video_frames = read_video(r'C:\Personal_Projects\projects\Computer Vision\football_analytics\data\clips\0bfacc_0.mp4')
 
+    video_frames = [frame for frame in video_frames if frame is not None]
+    if not video_frames:
+        print("Error: No valid frames read from video.")
+        return
+
     # Initilize Tracker
     tracker = Tracker(r'C:\Personal_Projects\projects\Computer Vision\football_analytics\models\best.pt')
 
